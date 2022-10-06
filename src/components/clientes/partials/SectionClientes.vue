@@ -5,6 +5,9 @@
       <img class="icone" src="../../../assets/user.svg" alt="Icone usuário">
       <h2>{{ pessoa.name }}<input v-maska="['+55 (##) #####-####', '+55 (##) ####-####']" v-model="pessoa.phone" />
       </h2>
+      <button @click="removeUsuario(pessoa.name)" class="excluir">
+        &times;
+      </button>
     </div>
   </section>
 </template>
@@ -15,9 +18,16 @@ import { usuariosStore } from '../../../store/usuarios'
 export default {
   setup() {
     const store = usuariosStore()
-    const listaPessoas = store.listaPessoas
+    let listaPessoas = store.listaPessoas
+
+    function removeUsuario(idUsuario) {
+      console.log(idUsuario)
+      listaPessoas = listaPessoas.filter((x) => x.name !== idUsuario)
+    }
+
     return {
-      listaPessoas
+      listaPessoas,
+      removeUsuario
     }
   }
 }
@@ -25,6 +35,17 @@ export default {
 
 <!-- CSS -->
 <style scoped>
+.excluir {
+  display: flex;
+  font-size: 50px;
+  background-color: var(--cor-fundo-tela);
+  color: white;
+}
+
+input {
+  margin-top: 10px;
+}
+
 section.clientes {
   display: flex;
   flex-direction: column;

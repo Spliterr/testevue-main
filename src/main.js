@@ -5,4 +5,8 @@ import Maska from "maska";
 
 import "animate.css";
 
-createApp(App).use(createPinia()).use(Maska).mount("#app");
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(Maska);
+app.mount("#app");
