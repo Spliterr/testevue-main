@@ -1,12 +1,14 @@
 import { defineStore } from "pinia";
+import actions from "./actions";
 
 export const usuariosStore = defineStore("usuarios", {
+  actions,
   state: () => {
     return {
       listaPessoas: [
         {
-          name: "Lucas Gomes",
-          phone: "21965665513",
+          name: "Otávio Ribeiro",
+          phone: "18965669999",
         },
       ],
     };

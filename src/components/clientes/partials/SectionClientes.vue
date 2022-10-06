@@ -5,7 +5,7 @@
       <img class="icone" src="../../../assets/user.svg" alt="Icone usuário">
       <h2>{{ pessoa.name }}<input v-maska="['+55 (##) #####-####', '+55 (##) ####-####']" v-model="pessoa.phone" />
       </h2>
-      <button @click="removeUsuario(pessoa.name)" class="excluir">
+      <button @click="removePessoas(pessoa.name)" class="excluir">
         &times;
       </button>
     </div>
@@ -14,20 +14,17 @@
 
 <!-- JS -->
 <script>
+import { computed } from 'vue'
 import { usuariosStore } from '../../../store/usuarios'
+
 export default {
   setup() {
     const store = usuariosStore()
-    let listaPessoas = store.listaPessoas
-
-    function removeUsuario(idUsuario) {
-      console.log(idUsuario)
-      listaPessoas = listaPessoas.filter((x) => x.name !== idUsuario)
-    }
+    const listaPessoas = computed(() => store.listaPessoas)
 
     return {
       listaPessoas,
-      removeUsuario
+      removePessoas: store.removeUsuario,
     }
   }
 }

@@ -48,7 +48,6 @@ export default {
       mostrarModal: false,
     })
     const store = usuariosStore()
-    const listaPessoas = store.listaPessoas
 
     let salvar = reactive({
       salvarNome: "",
@@ -60,7 +59,7 @@ export default {
         name: salvarNome,
         phone: salvarNumero
       }
-      listaPessoas.push(construcao)
+      store.listaPessoas.push(construcao)
       estado.mostrarModal = false
       salvar.salvarNome = ""
       salvar.salvarNumero = ""
@@ -82,7 +81,6 @@ export default {
       close: modal.close,
       estado,
       gerenciarModal,
-      listaPessoas,
       salvar,
       adicionarPessoas
     }
