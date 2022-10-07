@@ -16,7 +16,8 @@
       </div>
       <label>Whatsapp <span>*</span></label>
       <div class="input cinza">
-        <input type="tel" autocomplete="false" spellcheck="false" placeholder="(99) 99999-9999"
+        <input v-on:keyup.enter="adicionarPessoas(salvar.salvarNome, salvar.salvarNumero)" type="tel"
+          autocomplete="false" spellcheck="false" placeholder="(99) 99999-9999"
           v-maska="['+55 (##) #####-####', '+55 (##) ####-####']" v-model="salvar.salvarNumero">
       </div>
       <button type="button" class="principal" @click="adicionarPessoas(salvar.salvarNome, salvar.salvarNumero)">Salvar
@@ -41,6 +42,8 @@ export default {
       salvarNumero: ""
     })
 
+    const close = modal.close
+
     function adicionarPessoas(salvarNome, salvarNumero) {
       var ultimoObjeto = store.listaPessoas[store.listaPessoas.length - 1]
       let ultimoId = ultimoObjeto.id
@@ -53,9 +56,10 @@ export default {
       store.listaPessoas.push(construcao)
       salvar.salvarNome = ""
       salvar.salvarNumero = ""
+      close(true)
     }
     return {
-      close: modal.close,
+      close,
       salvar,
       adicionarPessoas
     }
