@@ -44,7 +44,7 @@ export default {
 #clientes {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
   background-color: var(--cor-fundo-tela);
