@@ -1,7 +1,10 @@
 <!-- HTML -->
 <template>
   <section class="titulo">
-    <button type="button" class="adicionar" @click="() => emit('novo-cliente')">
+    <button class="adicionar" @click="() => emit('clientes-favoritos')">
+      <p>Clientes favoritos</p>
+    </button>
+    <button class="adicionar" @click="() => emit('novo-cliente')">
       <p>Adicionar novo cliente</p>
     </button>
   </section>
@@ -20,22 +23,15 @@ export default {
 
 <!-- CSS -->
 <style scoped>
-.tela {
-  margin: 0 50px 0 0;
-}
-
-.input {
-  max-width: 400px;
-}
-
 button.adicionar {
   margin-left: auto;
 }
 
 /* Responsivo */
 @media screen and (max-width: 1000px) {
-  .input {
-    margin: 20px 0;
+
+  section.titulo {
+    width: 90% !important;
   }
 
   button.adicionar {

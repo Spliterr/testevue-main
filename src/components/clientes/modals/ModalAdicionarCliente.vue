@@ -1,11 +1,7 @@
-<!-- HTML -->
 <template>
-  <section v-if="estado.mostrarModal" class="modal">
-    <!-- Background -->
+  <section>
     <div class="background" @click="close" />
-    <!-- Quadro -->
-    <div class="quadro animate__animated animate__fadeInRight animate__faster">
-      <!-- Título -->
+    <div @click.stop class="quadro animate__animated animate__fadeInRight animate__faster">
       <div class="titulo">
         <div class="texto">
           <h2><span>Novo</span></h2>
@@ -13,13 +9,11 @@
         </div>
         <button type="button" @click="close">Fechar</button>
       </div>
-      <!-- Nome -->
       <label>Nome <span>*</span></label>
       <div class="input cinza">
         <input type="text" autocomplete="false" spellcheck="false" placeholder="Digite aqui..."
           v-model="salvar.salvarNome">
       </div>
-      <!-- Whatsapp -->
       <label>Whatsapp <span>*</span></label>
       <div class="input cinza">
         <input type="tel" autocomplete="false" spellcheck="false" placeholder="(99) 99999-9999"
@@ -33,54 +27,35 @@
 
 <!-- JS -->
 <script>
-import { reactive, onMounted, onBeforeUnmount } from 'vue';
+import { reactive } from 'vue';
 import useModal from "../../../hooks/useModal";
 import { usuariosStore } from '../../../store/usuarios'
 
 
 export default {
-  props: {
-    abrirModal: Boolean,
-  },
-  setup(props) {
+  setup() {
     const modal = useModal()
-    const estado = reactive({
-      mostrarModal: false,
-    })
     const store = usuariosStore()
-
     let salvar = reactive({
       salvarNome: "",
       salvarNumero: ""
     })
 
     function adicionarPessoas(salvarNome, salvarNumero) {
+      var ultimoObjeto = store.listaPessoas[store.listaPessoas.length - 1]
+      let ultimoId = ultimoObjeto.id
       const construcao = {
+        id: ++ultimoId,
         name: salvarNome,
-        phone: salvarNumero
+        phone: salvarNumero,
+        isFavorite: false,
       }
       store.listaPessoas.push(construcao)
-      estado.mostrarModal = false
       salvar.salvarNome = ""
       salvar.salvarNumero = ""
     }
-
-    onMounted(() => {
-      modal.listen(gerenciarModal);
-    })
-
-    onBeforeUnmount(() => {
-      modal.off(gerenciarModal)
-    })
-
-    function gerenciarModal(payload) {
-      estado.mostrarModal = payload.status
-    }
-
     return {
       close: modal.close,
-      estado,
-      gerenciarModal,
       salvar,
       adicionarPessoas
     }
@@ -90,31 +65,12 @@ export default {
 
 <!-- CSS -->
 <style scoped>
-section.modal {
-  z-index: 10;
-}
-
 /* Label */
 .quadro label {
   margin: 20px 0 10px 0;
 }
 
-/* Linha */
-input.endereco {
-  margin: 10px 0 0 0;
-}
-
-/* Data */
-.quadro .data #seletorCalendario {
-  position: absolute;
-  top: 70px;
-  left: -10px;
-}
-
 button.principal {
   margin: 20px 0 0 0;
 }
-
-/* Responsivo */
-@media screen and (max-width: 1000px) {}
 </style>

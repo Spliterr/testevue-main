@@ -34,12 +34,12 @@ section.modal.mostrar .background {
 section.modal .quadro {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: flex-start;
   position: relative;
   background-color: var(--cor-modal-fundo);
   width: 100%;
   max-width: 700px;
+  min-width: 40vw;
   min-height: 100vh;
   padding: 50px 50px 50vh 50px;
   border-radius: 10px 0 0 10px;
