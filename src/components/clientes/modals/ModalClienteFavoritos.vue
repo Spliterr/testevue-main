@@ -35,7 +35,8 @@ export default {
 
     return {
       close: modal.close,
-      listaPessoas
+      listaPessoas,
+      removePessoas: store.removeUsuario
     }
   }
 }
