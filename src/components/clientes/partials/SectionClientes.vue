@@ -69,6 +69,7 @@ h1 {
   font-size: 50px;
   background-color: var(--cor-fundo-tela);
   color: white;
+  align-items: center;
 }
 
 input {
