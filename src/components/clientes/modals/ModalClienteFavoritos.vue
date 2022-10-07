@@ -2,7 +2,12 @@
   <section>
     <div class="background" @click="close" />
     <div @click.stop class="quadro animate__animated animate__fadeInRight animate__faster">
-      <h1>Lista favoritos</h1>
+      <div class="titulo">
+        <div class="texto">
+          <h1>Lista favoritos</h1>
+        </div>
+        <button type="button" @click="close">Fechar</button>
+      </div>
       <div v-for=" (pessoa, index) in listaPessoas" :key="`${index}-${pessoa}`">
         <div v-if="pessoa.isFavorite" class="cliente">
           <img class="icone" src="../../../assets/user.svg" alt="Icone usuário">
@@ -44,12 +49,26 @@ export default {
 
 <!-- CSS -->
 <style scoped>
+section button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  font-family: var(--bold);
+  font-size: clamp(0.6rem, 3vw, 0.8rem);
+  color: var(--cor-branco-fixo);
+  background: var(--cor-vermelho);
+  background-size: 600%;
+  transition: all 0.3s;
+}
+
 h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   font-family: var(--regular);
-  font-size: 3rem !important;
+  font-size: 2rem !important;
   color: var(--cor-lista-branco);
   width: 100%;
   max-width: 600px;
@@ -136,7 +155,6 @@ input {
 @media screen and (max-width: 1000px) {
   .cliente {
     position: relative;
-    align-items: flex-start;
     padding: 15px 15px 45px 15px;
   }
 }

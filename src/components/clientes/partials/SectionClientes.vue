@@ -133,12 +133,9 @@ section.clientes {
     padding: 20px 20px 40px 20px;
   }
 
-
   .cliente {
     position: relative;
-    align-items: flex-start;
     padding: 15px 15px 45px 15px;
-
   }
 }
 </style>

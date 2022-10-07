@@ -4,8 +4,7 @@
     <div @click.stop class="quadro animate__animated animate__fadeInRight animate__faster">
       <div class="titulo">
         <div class="texto">
-          <h2><span>Novo</span></h2>
-          <h2>CLIENTE</h2>
+          <h1>Adicionar novo cliente</h1>
         </div>
         <button type="button" @click="close">Fechar</button>
       </div>
@@ -67,14 +66,34 @@ export default {
 }
 </script>
 
-<!-- CSS -->
 <style scoped>
-/* Label */
+h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: var(--regular);
+  font-size: 2rem !important;
+  color: var(--cor-lista-branco);
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  padding: 0 20px 0 10px;
+  pointer-events: none;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
 .quadro label {
   margin: 20px 0 10px 0;
 }
 
 button.principal {
   margin: 20px 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  section.modal .quadro {
+    min-width: 100vw !important;
+  }
 }
 </style>
