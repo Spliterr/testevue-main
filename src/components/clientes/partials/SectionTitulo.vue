@@ -24,18 +24,13 @@ export default {
 <!-- CSS -->
 <style scoped>
 button.adicionar {
-  margin-left: auto;
+  margin-right: 10px;
 }
 
 /* Responsivo */
 @media screen and (max-width: 1000px) {
-
   section.titulo {
     width: 90% !important;
-  }
-
-  button.adicionar {
-    margin-left: 0;
   }
 }
 </style>

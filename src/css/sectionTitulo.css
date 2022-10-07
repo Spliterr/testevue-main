@@ -4,7 +4,6 @@ section.titulo {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  width: 30%;
   padding: 20px 40px 0 40px;
   position: relative;
 }
